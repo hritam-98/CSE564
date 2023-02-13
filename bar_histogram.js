@@ -28,11 +28,12 @@ var numerical_list = [
 ];
 var categorical_list = [
   "league_level",
-  "nationality_name",
+  "nationality_rank",
   "club_contract_valid_until",
   "work_rate",
 ];
 myFunction().then(function (value) {
+
   data = value;
   hv = ["Horizontal", "Vertical"];
   for (var i = 0; i < hv.length; i++) {
@@ -107,7 +108,9 @@ myFunction().then(function (value) {
         // }
       });
     });
+    
 });
+
 // $('input[type=radio][name=xAxis]').change(function () {
 //     xValue = this.value;
 //     if (yValue != "") {
@@ -165,6 +168,8 @@ function drawBarChart(value, data) {
     .append("rect")
     .attr("class", "bar")
     .attr("id", "bar")
+    //.on("mouseover", onMouseOver) //Add listener for the mouseover event
+    //.on("mouseout", onMouseOut)   //Add listener for the mouseout event
     .attr("x", function (d) {
       return xScale(d);
     })
@@ -174,7 +179,20 @@ function drawBarChart(value, data) {
     .attr("width", xScale.bandwidth())
     .attr("height", function (d) {
       return height - yScale(d);
+    
+    })
+    .attr('count', function(d){
+        return d
     });
+
+    $('rect').hover(function(){
+        $('.text-class').css('visibility','visible')
+        $('#count').text($(this).attr('count'))
+    },
+    function(){
+        $('.text-class').css('visibility','hidden')
+        $('#count').text('')
+    })
 
   svg
     .append("text")
@@ -202,6 +220,49 @@ function drawBarChart(value, data) {
     .style("font-family", "Helvetica")
     .style("font-size", 12)
     .text("count");
+
+    function onMouseOver(d, i) {
+        //console.log(countFrequency(d)[1])
+        console.log([d.length])
+        document.getElementById('count').innerHTML = countFrequency(d)[1]
+        // d3.select(this).attr('class', 'highlight');
+        // d3.select(this)
+        // // var x = d3.scaleBand()
+        // // .range([ 0, width ])
+        // //   .domain(data.map(function(d) { return d.STATE; }))
+        // //   .padding(0.2);
+        // // console.log(x)
+        
+        // // var margin = {top: 10, right: 30, bottom: 90, left: 40},
+        // //     width = 700 - margin.left - margin.right,
+        // //     height = 450 - margin.top - margin.bottom;
+      
+        // // var x = d3.scaleBand().range([0, width]).padding(0.2),
+        // // y = d3.scaleLinear().range([height, 0]);
+        // g.append("text")
+        //  .attr('class', 'val') 
+        //  .attr('y', function() {
+        //      return height-yScale(d);
+        //  })
+        //  .attr("x", function() {
+        //     return xScale(d);
+        // })
+        //  .text(function() {
+        //      return [d.length()];  // Value of the text
+        //  });
+        }
+        
+        //mouseout event handler function
+    function onMouseOut(d, i) {
+        // use the text label class to remove label on mouseout
+        d3.select(this).attr('class', 'bar');
+        d3.select(this)
+          .transition()     // adds animation
+          .duration(400)
+          
+          d3.selectAll('.val')
+          .remove()
+        }
 }
 function drawBarChart_horizontal(value, data) {
   $("svg").children().remove();
@@ -259,12 +320,20 @@ function drawBarChart_horizontal(value, data) {
       return xScale(d);
     })
     .attr("height", yScale.bandwidth())
-    ;
+    .attr('count', function(d){
+        return d
+    });
 
+    $('rect').hover(function(){
+        $('.text-class').css('visibility','visible')
+        $('#count').text($(this).attr('count'))
+    },
+    function(){
+        $('.text-class').css('visibility','hidden')
+        $('#count').text('')
+    })
 
-
-
-
+    
   svg
     .append("text")
     .attr("x", width / 2 + 100)
@@ -365,6 +434,9 @@ function drawHistogram(value) {
       return height - y(d.length) - 1;
     })
     .style("fill", "#69b3a2");
+
+
+    
   svg
     .append("text")
     .attr("x", width / 2 + 100)
@@ -509,3 +581,4 @@ function countFrequency(array) {
 
   return [a, b];
 }
+

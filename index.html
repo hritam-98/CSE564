@@ -6,6 +6,12 @@
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
+        rect:hover{
+            fill:#eaf510 !important;
+        }
+        .text-class{
+            visibility: hidden;
+        }
         .dropbtn {
         background-color: #04AA6D;
         color: white;
@@ -48,7 +54,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="./bar_histogram.js"></script>
-        <h5>Select attribute first</h5>
+        <div style="text-align: center;margin-top: 50px;">
+            <a href = './scatterplot.html'>Show Scatter Plot</a>
+        </div>
+        <h5>Select attribute first</h5> 
         <div class="dropdown">
             <button class="dropbtn">Select Attribuets</button>
             <div class="dropdown-content" id="myList"></div>
@@ -63,7 +72,14 @@
         <div class="bar">
             <svg class="center", width = '800', height ='400'></svg>
         </div>
-        <a href = './scatterplot.html'>Show Scatter Plot</a>
+        <div >
+            <h5 class="text-class" style="margin-left: 400px;">
+            <span>count </span>
+            <span id="count"></span>
+        </h5>
+        </div>
+        
+        
         
     </body>
 
