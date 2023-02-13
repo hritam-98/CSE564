@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <head>
+        
+        <title>
+            Lab1
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        .dropbtn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        }
+
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+
+        .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #8e3e4d;}
+        </style>
+    </head>
+    <body>
+        <ul>
+        </ul>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="./bar_histogram.js"></script>
+        <div class="dropdown">
+            <button class="dropbtn">Select Attribuets</button>
+            <div class="dropdown-content" id="myList"></div>
+        </div>
+        <div class="orientation_axis">
+            <h2>Orientation</h2>
+        </div>
+    
+        <div class="bar">
+            <svg class="center", width = '800', height ='400'></svg>
+        </div>
+        <a href = './scatterplot.html'>Show Scatter Plot</a>
+        
+    </body>
+
+</html>
