@@ -30,38 +30,79 @@ var categorical_list = [
     'nationality_name', 
     'club_contract_valid_until', 
     'work_rate']
+var count =0
+var count1 =0
+var xValue =''
+var yValue =''
 myFunction().then(
     function (value) {
         var xValue = "";
         var yValue = "";
-
+        for(var i = 0; i<numerical_list.length; i++){
+            const node = document.createElement("a");
+            const textnode = document.createTextNode(numerical_list[i]);
+            node.appendChild(textnode);
+            document.getElementById("scatterList").appendChild(node);
+        }
+        
+        $("#scatterList").children().click(function(e){
+        //console.log(e.currentTarget.innerHTML)
+        $("input[type=radio][name = xAxis]").prop("checked", false);
+        $('.x-text').text(e.currentTarget.innerHTML)
+        text = e.currentTarget.innerHTML
+        if (count%2 == 0){
+            first_text = e.currentTarget.innerHTML
+            //console.log(first_text)
+            //$('.x-text').text(e.currentTarget.innerHTML)
+        }
+        else{
+            second_text = e.currentTarget.innerHTML
+            //console.log(second_text)
+            //$('.selected_y').text(e.currentTarget.innerHTML)
+        }
+        count ++;
+        });
         data = value;
         //console.log(typeof (data))
         // for (var i = 0; i < categorical_list.length; i++) {
         //     $(".xAxis").append('<input type="radio" id="' + categorical_list[i] + '" name="xAxis" value="' + categorical_list[i] + '"><label for="' + categorical_list[i] + '">' + categorical_list[i] + '</label><br>');
         //     $(".yAxis").append('<input type="radio" id="' + categorical_list[i] + '" name="yAxis" value="' + categorical_list[i] + '"><label for="' + categorical_list[i] + '">' + categorical_list[i] + '</label><br>');
         // }
-        for (var i = 0; i < numerical_list.length; i++) {
-            $(".xAxis").append('<input type="radio" id="' + numerical_list[i] + '1" name="xAxis" value="' + numerical_list[i] + '"><label for="' + numerical_list[i] + '1">' + numerical_list[i] + '</label><br>');
-            $(".yAxis").append('<input type="radio" id="' + numerical_list[i] + '2" name="yAxis" value="' + numerical_list[i] + '"><label for="' + numerical_list[i] + '2">' + numerical_list[i] + '</label><br>');
+        thisList = ['x-axis', 'y-axis']
+        for (var i = 0; i < thisList.length; i++) {
+            $(".xAxis").append('<input type="radio" id="' + thisList[i] + '1" name="xAxis" value="' + thisList[i] + '"><label for="' + thisList[i] + '1">' + thisList[i] + '</label><br>');
+            //$(".yAxis").append('<input type="radio" id="' + thisList[i] + '2" name="yAxis" value="' + thisList[i] + '"><label for="' + thisList[i] + '2">' + thisList[i] + '</label><br>');
         }
         $('input[type=radio][name=xAxis]').change(function () {
-            xValue = this.value;
-            if (yValue != "") {
+            //xValue = this.value;
+            //console.log(xValue)
+            count1++
+            if (this.value == 'x-axis'){
+                xValue = text
+                $('.selected_x').text(xValue)
+            }
+            else{
+                yValue =text
+                $('.selected_y').text(yValue)
+            }
+            if (xValue != '' && yValue != '') {
                 scatterPlot(xValue, yValue, data);
             }
         });
-        $('input[type=radio][name=yAxis]').change(function () {
-            yValue = this.value;
-            if (xValue != "") {
-                scatterPlot(xValue, yValue, data);
-            }
-        });
+        
+
+        // $('input[type=radio][name=yAxis]').change(function () {
+        //     yValue = this.value;
+        //     //$('.selected_y').text(second_text)
+        //     if (xValue != "") {
+        //         scatterPlot(xValue, yValue, data);
+        //     }
+        // });
     }
 );
 
 function scatterPlot(xValue, yValue, data) {
-    //console.log(xValue, yValue);
+    console.log(xValue, yValue);
 
     var xData = [];
     for (var i = 0; i < data.length; i++) {
