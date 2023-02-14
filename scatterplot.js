@@ -270,26 +270,34 @@ function scatterPlot(xValue, yValue, data) {
     .attr("x", width / 2 + 100)
     .attr("y", 50)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
-    .text("Scatter Plot");
+    .style("font-weight", 'bold')
+    .text(
+      "Scatter plot of attribute: '"
+        .concat(xValue)
+        .concat("' vs. attribute: '")
+        .concat(yValue).concat("'")
+    );
 
   // X label
   svg
     .append("text")
     .attr("x", width / 2 + 100)
-    .attr("y", height - 15 + 150)
+    .attr("y", height - 5 + 150)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
+    .style("font-weight", 'bold')
     .text(xValue);
   // Y label
   svg
     .append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate(40," + height + ")rotate(-90)")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
+    .style("font-weight", 'bold')
     .text(yValue);
 
   // Step 6
@@ -318,6 +326,9 @@ function scatterPlot(xValue, yValue, data) {
     .attr("transform", "translate(" + 100 + "," + 100 + ")")
     .style("fill", "#CC0000");
 }
+
+
+
 
 function scatterPlot_categorical(xValue, yValue, data) {
   console.log(xValue, yValue);
@@ -383,19 +394,26 @@ function scatterPlot_categorical(xValue, yValue, data) {
     .attr("x", width / 2 + 100)
     .attr("y", 50)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
     .style("padding", "7px")
     .style("background-color", "#03f79e")
-    .text("Scatter Plot");
+    .style("font-weight", 'bold')
+    .text(
+      "Scatter plot of attribute: '"
+        .concat(xValue)
+        .concat("' vs. attribute: '")
+        .concat(yValue).concat("'")
+    );
 
   // X label
   svg
     .append("text")
     .attr("x", width / 2 + 100)
-    .attr("y", height - 15 + 150)
+    .attr("y", height - 5 + 150)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
+    .style("font-weight", 'bold')
     .style("font-size", 20)
     .text(xValue);
   // Y label
@@ -403,8 +421,9 @@ function scatterPlot_categorical(xValue, yValue, data) {
     .append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate(30," + height + ")rotate(-90)")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
+    .style("font-weight", 'bold')
     .text(yValue);
 
   // Step 6

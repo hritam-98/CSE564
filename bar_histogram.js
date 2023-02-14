@@ -49,14 +49,14 @@ myFunction().then(function (value) {
     );
     //$(".axis").append('<input type="radio" id="' + numerical_list[i] + '2" name="yAxis" value="' + numerical_list[i] + '"><label for="' + numerical_list[i] + '2">' + numerical_list[i] + '</label><br>');
   }
-  var dropdownItems = document.querySelectorAll('.dropdown-content a');
+  var dropdownItems = document.querySelectorAll(".dropdown-content a");
 
-for (var i = 0; i < dropdownItems.length; i++) {
-  dropdownItems[i].addEventListener('click', function() {
-    var dropdown = this.parentNode.parentNode;
-    dropdown.classList.remove('show');
-  });
-}
+  for (var i = 0; i < dropdownItems.length; i++) {
+    dropdownItems[i].addEventListener("click", function () {
+      var dropdown = this.parentNode.parentNode;
+      dropdown.classList.remove("show");
+    });
+  }
   for (var i = 0; i < categorical_list.length; i++) {
     const node = document.createElement("a");
     const textnode = document.createTextNode(categorical_list[i]);
@@ -69,7 +69,7 @@ for (var i = 0; i < dropdownItems.length; i++) {
     node.appendChild(textnode);
     document.getElementById("myList").appendChild(node);
   }
-  
+
   $("#myList")
     .children()
     .click(function (e) {
@@ -206,18 +206,25 @@ function drawBarChart(value, data) {
   svg
     .append("text")
     .attr("x", width / 2 + 100)
-    .attr("y", 100)
+    .attr("y", 50)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-weight", "bold")
+    .style("font-family", "Serif")
     .style("font-size", 20)
-    .text("Bar Plot");
+    .text(
+      "Vertical bar plot of categorical attribute: '"
+        .concat(value)
+        .concat("' vs. ")
+        .concat("count")
+    );
   // X label
   svg
     .append("text")
     .attr("x", width / 2 + 100)
-    .attr("y", height - 15 + 150)
+    .attr("y", height - 5 + 150)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
+    .style("font-weight", 'bold')
     .style("font-size", 20)
     .text(value);
 
@@ -226,8 +233,9 @@ function drawBarChart(value, data) {
     .append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate(60," + height + ")rotate(-90)")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
+    .style("font-weight", 'bold')
     .text("count");
 
   //mouseout event handler function
@@ -241,6 +249,8 @@ function drawBarChart(value, data) {
     d3.selectAll(".val").remove();
   }
 }
+
+
 function drawBarChart_horizontal(value, data) {
   $("svg").children().remove();
   //document.getElementById("bar").innerHTML="";
@@ -317,20 +327,27 @@ function drawBarChart_horizontal(value, data) {
   svg
     .append("text")
     .attr("x", width / 2 + 100)
-    .attr("y", 100)
+    .attr("y", 50)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-weight", "bold")
+    .style("font-family", "Serif")
     .style("font-size", 20)
-    .text("Bar Plot");
+    .text(
+      "Horizontal bar plot of categorical attribute: '"
+        .concat(value)
+        .concat("' vs. ")
+        .concat("count")
+    );
 
   // X label
   svg
     .append("text")
     .attr("x", width / 2 + 100)
-    .attr("y", height - 15 + 150)
+    .attr("y", height - 5 + 150)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
+    .style("font-weight", 'bold')
     .text("count");
 
   // Y label
@@ -338,8 +355,9 @@ function drawBarChart_horizontal(value, data) {
     .append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate(20," + height + ")rotate(-90)")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
+    .style("font-weight", 'bold')
     .text(value);
 }
 
@@ -365,14 +383,14 @@ function drawHistogram(value) {
     .scaleLinear()
     .range([0, width])
     .domain([
-        d3.min(barData, function(d){
-            return parseInt(d)- 5;
-        }),
+      d3.min(barData, function (d) {
+        return parseInt(d) - 5;
+      }),
       d3.max(barData, function (d) {
         return parseInt(d) + 5;
       }),
     ]); // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
-    
+
   g.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
@@ -420,39 +438,46 @@ function drawHistogram(value) {
     .attr("height", function (d) {
       return height - y(d.length) - 1;
     })
-    
-    .style("fill", "#69b3a2").attr("count", function (d) {
-        return d.length;
-      });
-  
-    $("rect").hover(
-      function () {
-        $(".text-class").css("visibility", "visible");
-        $("#count").text($(this).attr("count"));
-      },
-      function () {
-        $(".text-class").css("visibility", "hidden");
-        $("#count").text("");
-      }
-    );
-  
+
+    .style("fill", "#69b3a2")
+    .attr("count", function (d) {
+      return d.length;
+    });
+
+  $("rect").hover(
+    function () {
+      $(".text-class").css("visibility", "visible");
+      $("#count").text($(this).attr("count"));
+    },
+    function () {
+      $(".text-class").css("visibility", "hidden");
+      $("#count").text("");
+    }
+  );
 
   svg
     .append("text")
     .attr("x", width / 2 + 100)
-    .attr("y", 100)
+    .attr("y", 50)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-weight", "bold")
+    .style("font-family", "Serif")
     .style("font-size", 20)
-    .text("Histogram Plot");
+    .text(
+      "Vertical histogram plot of numerical attribute: '"
+        .concat(value)
+        .concat("' vs. ")
+        .concat("count")
+    );
   // X label
   svg
     .append("text")
     .attr("x", width / 2 + 100)
-    .attr("y", height - 15 + 150)
+    .attr("y", height - 5 + 150)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
+    .style("font-weight", 'bold')
     .text(value);
 
   // Y label
@@ -460,14 +485,15 @@ function drawHistogram(value) {
     .append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate(60," + height + ")rotate(-90)")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
+    .style("font-weight", 'bold')
     .text("count");
 
   function onMouseOver(d, i) {
     console.log(d.length);
     d3.select(this).attr("class", "highlight");
-    d3.select(this)
+    d3.select(this);
     svg
       .append("text")
       .attr("class", "val")
@@ -512,8 +538,8 @@ function drawHistogram_horizontal(value) {
 
   var y = d3.scaleLinear().range([height, 0]);
   y.domain([
-    d3.min(barData, function(d){
-        return parseInt(d)- 5;
+    d3.min(barData, function (d) {
+      return parseInt(d) - 5;
     }),
     d3.max(barData, function (d) {
       return parseInt(d) + 5;
@@ -567,38 +593,45 @@ function drawHistogram_horizontal(value) {
     .attr("height", function (d) {
       return y(d.x0) - y(d.x1) - 1;
     })
-    .style("fill", "#69b3a2").attr("count", function (d) {
-        return d.length;
-      });
-  
-    $("rect").hover(
-      function () {
-        $(".text-class").css("visibility", "visible");
-        $("#count").text($(this).attr("count"));
-      },
-      function () {
-        $(".text-class").css("visibility", "hidden");
-        $("#count").text("");
-      }
-    );
-  
+    .style("fill", "#69b3a2")
+    .attr("count", function (d) {
+      return d.length;
+    });
+
+  $("rect").hover(
+    function () {
+      $(".text-class").css("visibility", "visible");
+      $("#count").text($(this).attr("count"));
+    },
+    function () {
+      $(".text-class").css("visibility", "hidden");
+      $("#count").text("");
+    }
+  );
 
   svg
     .append("text")
     .attr("x", width / 2 + 100)
-    .attr("y", 100)
+    .attr("y", 50)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-weight", "bold")
+    .style("font-family", "Serif")
     .style("font-size", 20)
-    .text("Histogram Plot");
+    .text(
+      "Horizontal histogram plot of numerical attribute: '"
+        .concat(value)
+        .concat("' vs. ")
+        .concat("count")
+    );
   // X label
   svg
     .append("text")
     .attr("x", width / 2 + 100)
-    .attr("y", height - 15 + 150)
+    .attr("y", height - 5 + 150)
     .attr("text-anchor", "middle")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
+    .style("font-weight", 'bold')
     .text("count");
 
   // Y label
@@ -606,8 +639,9 @@ function drawHistogram_horizontal(value) {
     .append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate(40," + height + ")rotate(-90)")
-    .style("font-family", "Times New Roman")
+    .style("font-family", "Serif")
     .style("font-size", 20)
+    .style("font-weight", 'bold')
     .text(value);
 }
 
