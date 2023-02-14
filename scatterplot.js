@@ -51,7 +51,6 @@ myFunction().then(function (value) {
     node.appendChild(textnode);
     document.getElementById("scatterList").appendChild(node);
   }
- 
 
   $("#scatterList")
     .children()
@@ -96,7 +95,7 @@ myFunction().then(function (value) {
     //xValue = this.value;
     //console.log(xValue)
     count1++;
-    if (this.value == "x-axis") {
+    if (this.value == "X-Axis") {
       xValue = text;
       $(".selected_x").text(xValue);
     } else {
@@ -120,8 +119,6 @@ myFunction().then(function (value) {
   //     }
   // });
 });
-
-
 
 // function scatterPlot_categorical(data, xdata, ydata) {
 //   $("svg").children().remove();
@@ -309,7 +306,8 @@ function scatterPlot(xValue, yValue, data) {
     .data(scatterData)
     .enter()
     .append("circle")
-    .transition().duration(1000)
+    .transition()
+    .duration(1000)
     .attr("cx", function (d) {
       return xScale(d[0]);
     })
@@ -322,115 +320,116 @@ function scatterPlot(xValue, yValue, data) {
 }
 
 function scatterPlot_categorical(xValue, yValue, data) {
-    console.log(xValue, yValue);
-  
-    var xData = [];
-    for (var i = 0; i < data.length; i++) {
-      xData.push(data[i][xValue]);
-    }
-  
-    var yData = [];
-    for (var i = 0; i < data.length; i++) {
-      yData.push(data[i][yValue]);
-    }
-  
-    scatterData = [];
-    for (var i = 0; i < xData.length; i++) {
-      temp = [];
-      temp.push(xData[i]);
-      temp.push(yData[i]);
-      scatterData.push(temp);
-    }
-  
-    //console.log(scatterData)
-  
-    $("svg").children().remove();
-  
-    var svg = d3.select("svg"),
-      margin = 200,
-      width = svg.attr("width") - margin, //300
-      height = svg.attr("height") - margin; //200
-  
-    // Step 4
-    xrange = d3.max(xData, function (d) {
-      return parseInt(d);
-    });
-    yrange = d3.max(yData, function (d) {
-      return parseInt(d);
-    });
-    xrange1 = d3.min(xData, function (d) {
-      return parseInt(d);
-    });
-    yrange1 = d3.min(yData, function (d) {
-      return parseInt(d);
-    });
-  
-    var xScale = d3
-        .scaleLinear()
-        .domain([xrange1 - 1, xrange + 1])
-        .range([0, width]),
-      yScale = d3
-        .scaleLinear()
-        .domain([yrange1 - 1, yrange + 1])
-        .range([height, 0]);
-  
-    var g = svg
-      .append("g")
-      .attr("transform", "translate(" + 100 + "," + 100 + ")");
-  
-    // Step 5
-    // Title
-    svg
-      .append("text")
-      .attr("x", width / 2 + 100)
-      .attr("y", 50)
-      .attr("text-anchor", "middle")
-      .style("font-family", "Times New Roman")
-      .style("font-size", 20)
-      .style("padding", "7px")
-      .style("background-color", "#03f79e")
-      .text("Scatter Plot");
-  
-    // X label
-    svg
-      .append("text")
-      .attr("x", width / 2 + 100)
-      .attr("y", height - 15 + 150)
-      .attr("text-anchor", "middle")
-      .style("font-family", "Times New Roman")
-      .style("font-size", 20)
-      .text(xValue);
-    // Y label
-    svg
-      .append("text")
-      .attr("text-anchor", "middle")
-      .attr("transform", "translate(30," + height + ")rotate(-90)")
-      .style("font-family", "Times New Roman")
-      .style("font-size", 20)
-      .text(yValue);
-  
-    // Step 6
-    g.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(xScale));
-  
-    g.append("g").call(d3.axisLeft(yScale));
-  
-    // Step 7
-    svg
-      .append("g")
-      .selectAll("dot")
-      .data(scatterData)
-      .enter()
-      .append("circle")
-      .transition().duration(1000)
-      .attr("cx", function (d) {
-        return xScale(d[0])+Math.random()*10-5;
-      })
-      .attr("cy", function (d) {
-        return yScale(d[1])+Math.random()*10-5;
-      })
-      .attr("r", 2)
-      .attr("transform", "translate(" + 100 + "," + 100 + ")")
-      .style("fill", "#CC0000");
+  console.log(xValue, yValue);
+
+  var xData = [];
+  for (var i = 0; i < data.length; i++) {
+    xData.push(data[i][xValue]);
   }
+
+  var yData = [];
+  for (var i = 0; i < data.length; i++) {
+    yData.push(data[i][yValue]);
+  }
+
+  scatterData = [];
+  for (var i = 0; i < xData.length; i++) {
+    temp = [];
+    temp.push(xData[i]);
+    temp.push(yData[i]);
+    scatterData.push(temp);
+  }
+
+  //console.log(scatterData)
+
+  $("svg").children().remove();
+
+  var svg = d3.select("svg"),
+    margin = 200,
+    width = svg.attr("width") - margin, //300
+    height = svg.attr("height") - margin; //200
+
+  // Step 4
+  xrange = d3.max(xData, function (d) {
+    return parseInt(d);
+  });
+  yrange = d3.max(yData, function (d) {
+    return parseInt(d);
+  });
+  xrange1 = d3.min(xData, function (d) {
+    return parseInt(d);
+  });
+  yrange1 = d3.min(yData, function (d) {
+    return parseInt(d);
+  });
+
+  var xScale = d3
+      .scaleLinear()
+      .domain([xrange1 - 1, xrange + 1])
+      .range([0, width]),
+    yScale = d3
+      .scaleLinear()
+      .domain([yrange1 - 1, yrange + 1])
+      .range([height, 0]);
+
+  var g = svg
+    .append("g")
+    .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+  // Step 5
+  // Title
+  svg
+    .append("text")
+    .attr("x", width / 2 + 100)
+    .attr("y", 50)
+    .attr("text-anchor", "middle")
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
+    .style("padding", "7px")
+    .style("background-color", "#03f79e")
+    .text("Scatter Plot");
+
+  // X label
+  svg
+    .append("text")
+    .attr("x", width / 2 + 100)
+    .attr("y", height - 15 + 150)
+    .attr("text-anchor", "middle")
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
+    .text(xValue);
+  // Y label
+  svg
+    .append("text")
+    .attr("text-anchor", "middle")
+    .attr("transform", "translate(30," + height + ")rotate(-90)")
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
+    .text(yValue);
+
+  // Step 6
+  g.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale));
+
+  g.append("g").call(d3.axisLeft(yScale));
+
+  // Step 7
+  svg
+    .append("g")
+    .selectAll("dot")
+    .data(scatterData)
+    .enter()
+    .append("circle")
+    .transition()
+    .duration(1000)
+    .attr("cx", function (d) {
+      return xScale(d[0]) + Math.random() * 10 - 5;
+    })
+    .attr("cy", function (d) {
+      return yScale(d[1]) + Math.random() * 10 - 5;
+    })
+    .attr("r", 2)
+    .attr("transform", "translate(" + 100 + "," + 100 + ")")
+    .style("fill", "#CC0000");
+}
