@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+    <head>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+        <title>
+            CSE564 Lab1
+            
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .footballImage {
+    position: absolute;
+    right: 205px;
+    top: 70px;
+    z-index: -1;
+}
+        rect:hover{
+            fill:#f54910 !important;
+        }
+        .text-class{
+            visibility: hidden;
+        }
+        .dropbtn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        }
+
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+
+        .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #8e3e4d;}
+        .dropdown-content a {
+  cursor: pointer;
+}
+
+.dropdown-content a:active {
+  background-color: #ddd;
+  cursor: default;
+}
+.dropdown-content a:active + .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.dropdown-content a:active + .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+}
+        body{
+            background-color: antiquewhite;
+            width: 80%;
+            margin: auto;
+        }
+        </style>
+    </head>
+    <body>
+        <ul>
+        </ul>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="./bar_histogram.js"></script>
+        <h2 style="text-align: center; padding: 5px; background-color: #eaf510; color: rgb(16, 1, 1);">FIFA22 player data analysis</h2>
+        <div style="text-align: center;margin-top: 50px;">
+            <a href = './scatterplot.html' style="background-color: #03f79e; padding: 7px; text-decoration: none;font-size: large;">Show Scatter Plot</a>
+        </div>
+        <h3>Select attribute first</h3> 
+        <div class="footballImage">
+            <img style="align-items: end;" src="images/fifa22.jpg" width="200px">
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Select Attribuets</button>
+            <div class="dropdown-content" id="myList"></div>
+        </div>
+        <div>
+            <h3>Selected attribute:</h3><h3 class="radio-option">----</h3>
+        </div>
+        <div class="orientation_axis">
+            <h2>Orientation</h2>
+        </div>
+        <div >
+            <h5 class="text-class" style="margin-left: 400px;font-size: larger;">
+            <span>count </span>
+            <span id="count"></span>
+        </h5>
+        </div>
+
+        <div class="bar">
+            <svg class="center", width = '800', height ='500'></svg>
+        </div>
+
+        
+        
+        
+    </body>
+
+</html>

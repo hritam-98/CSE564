@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <title>
+        Lab1
+    </title>
+    <style>
+            circle:hover{
+            fill:#10f551 !important;
+        }
+        .footballImage {
+    position: absolute;
+    right: 205px;
+    top: 70px;
+    z-index: -1;
+}
+        .d3sucks{
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        .dropbtn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        }
+
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+
+        .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #8e3e4d;}
+        .dropdown-content a {
+  cursor: pointer;
+}
+
+.dropdown-content a:active {
+  background-color: #ddd;
+  cursor: default;
+}
+.dropdown-content a:active + .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.dropdown-content a:active + .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+}
+        body{
+            background-color: antiquewhite;
+            width: 80%;
+            margin: auto;
+        }
+    
+    </style>
+    <!-- <style>
+        .dropbtn {
+          background-color: #3498DB;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+        }
+        
+        .dropbtn:hover, .dropbtn:focus {
+          background-color: #2980B9;
+        }
+        
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          min-width: 160px;
+          overflow: auto;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        
+        .dropdown a:hover {background-color: #ddd;}
+        
+        .show {display: block;}
+    </style> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <h2 style="text-align: center; padding: 5px; background-color: #eaf510; color: rgb(16, 1, 1);">FIFA22 player data analysis</h2>
+    <div style="text-align: center;margin-top: 50px;">
+        <a href="./index.html" style="background-color: #03f79e; padding: 7px; text-decoration: none;font-size: large;">Show Bar and Histogram Plot</a>
+    </div>
+    <div class="footballImage">
+        <img src="images/fifa22.jpg" width="200px">
+    </div>
+    <div class="d3sucks">
+        <h3>Select attribute first</h3> 
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn" data-toggle="dropdown">Select attribuets</button>
+        <div class="dropdown-content" id="scatterList" ></div>
+    </div>
+
+    <div class="xAxis">
+        <h3>Selected attribute</h5><h5 class="x-text" style="font-size: large;">----</h3>
+        <h3>Now select the axis</h3>
+    </div>
+
+    <!-- <div class="yAxis">
+        <h5 class="y-text">--Selected attribute--</h5>
+    </div> -->
+    <div class="text">
+        <h3>Selected X-Attribute</h3><h3 class="selected_x">----</h3>
+        <h3>Selected Y-Attribute</h3><h3 class="selected_y">----</h3>
+    </div>
+
+    <div class="bar">
+        <svg class="center" width="800" height="400" style="margin-left: 200px;"></svg>
+    </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="./scatterplot.js"></script>
+</body>
+
+</html>
