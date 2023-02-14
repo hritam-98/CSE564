@@ -49,6 +49,14 @@ myFunction().then(function (value) {
     );
     //$(".axis").append('<input type="radio" id="' + numerical_list[i] + '2" name="yAxis" value="' + numerical_list[i] + '"><label for="' + numerical_list[i] + '2">' + numerical_list[i] + '</label><br>');
   }
+  var dropdownItems = document.querySelectorAll('.dropdown-content a');
+
+for (var i = 0; i < dropdownItems.length; i++) {
+  dropdownItems[i].addEventListener('click', function() {
+    var dropdown = this.parentNode.parentNode;
+    dropdown.classList.remove('show');
+  });
+}
   for (var i = 0; i < categorical_list.length; i++) {
     const node = document.createElement("a");
     const textnode = document.createTextNode(categorical_list[i]);

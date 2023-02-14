@@ -7,8 +7,14 @@
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
+            .footballImage {
+    position: absolute;
+    right: 205px;
+    top: 70px;
+    z-index: -1;
+}
         rect:hover{
-            fill:#eaf510 !important;
+            fill:#f54910 !important;
         }
         .text-class{
             visibility: hidden;
@@ -47,6 +53,23 @@
         .dropdown:hover .dropdown-content {display: block;}
 
         .dropdown:hover .dropbtn {background-color: #8e3e4d;}
+        .dropdown-content a {
+  cursor: pointer;
+}
+
+.dropdown-content a:active {
+  background-color: #ddd;
+  cursor: default;
+}
+.dropdown-content a:active + .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.dropdown-content a:active + .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+}
         body{
             background-color: antiquewhite;
             width: 80%;
@@ -65,6 +88,9 @@
             <a href = './scatterplot.html' style="background-color: #03f79e; padding: 7px; text-decoration: none;font-size: large;">Show Scatter Plot</a>
         </div>
         <h3>Select attribute first</h3> 
+        <div class="footballImage">
+            <img style="align-items: end;" src="images/fifa22.jpg" width="200px">
+        </div>
         <div class="dropdown">
             <button class="dropbtn">Select Attribuets</button>
             <div class="dropdown-content" id="myList"></div>
@@ -75,16 +101,17 @@
         <div class="orientation_axis">
             <h2>Orientation</h2>
         </div>
-    
-        <div class="bar">
-            <svg class="center", width = '800', height ='500'></svg>
-        </div>
         <div >
             <h5 class="text-class" style="margin-left: 400px;">
             <span>count </span>
             <span id="count"></span>
         </h5>
         </div>
+
+        <div class="bar">
+            <svg class="center", width = '800', height ='500'></svg>
+        </div>
+
         
         
         
