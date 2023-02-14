@@ -5,7 +5,6 @@ async function myFunction() {
 var numerical_list = [
   "age",
   "overall",
-  "wage_eur",
   "height_cm",
   "weight_kg",
   "pace",
@@ -25,6 +24,7 @@ var numerical_list = [
   "mentality_interceptions",
   "mentality_vision",
   "mentality_penalties",
+  "wage_eur",
 ];
 var categorical_list = [
   "league_level",
@@ -33,7 +33,6 @@ var categorical_list = [
   "work_rate",
 ];
 myFunction().then(function (value) {
-
   data = value;
   hv = ["Horizontal", "Vertical"];
   for (var i = 0; i < hv.length; i++) {
@@ -50,19 +49,19 @@ myFunction().then(function (value) {
     );
     //$(".axis").append('<input type="radio" id="' + numerical_list[i] + '2" name="yAxis" value="' + numerical_list[i] + '"><label for="' + numerical_list[i] + '2">' + numerical_list[i] + '</label><br>');
   }
-
-  for (var i = 0; i < numerical_list.length; i++) {
-    const node = document.createElement("a");
-    const textnode = document.createTextNode(numerical_list[i]);
-    node.appendChild(textnode);
-    document.getElementById("myList").appendChild(node);
-  }
   for (var i = 0; i < categorical_list.length; i++) {
     const node = document.createElement("a");
     const textnode = document.createTextNode(categorical_list[i]);
     node.appendChild(textnode);
     document.getElementById("myList").appendChild(node);
   }
+  for (var i = 0; i < numerical_list.length; i++) {
+    const node = document.createElement("a");
+    const textnode = document.createTextNode(numerical_list[i]);
+    node.appendChild(textnode);
+    document.getElementById("myList").appendChild(node);
+  }
+  
   $("#myList")
     .children()
     .click(function (e) {
@@ -108,7 +107,6 @@ myFunction().then(function (value) {
         // }
       });
     });
-    
 });
 
 // $('input[type=radio][name=xAxis]').change(function () {
@@ -177,29 +175,32 @@ function drawBarChart(value, data) {
       return yScale(d);
     })
     .attr("width", xScale.bandwidth())
+    .transition()
+    .duration(1000)
     .attr("height", function (d) {
       return height - yScale(d);
-    
     })
-    .attr('count', function(d){
-        return d
+    .attr("count", function (d) {
+      return d;
     });
 
-    $('rect').hover(function(){
-        $('.text-class').css('visibility','visible')
-        $('#count').text($(this).attr('count'))
+  $("rect").hover(
+    function () {
+      $(".text-class").css("visibility", "visible");
+      $("#count").text($(this).attr("count"));
     },
-    function(){
-        $('.text-class').css('visibility','hidden')
-        $('#count').text('')
-    })
+    function () {
+      $(".text-class").css("visibility", "hidden");
+      $("#count").text("");
+    }
+  );
 
   svg
     .append("text")
     .attr("x", width / 2 + 100)
     .attr("y", 100)
     .attr("text-anchor", "middle")
-    .style("font-family", "Helvetica")
+    .style("font-family", "Times New Roman")
     .style("font-size", 20)
     .text("Bar Plot");
   // X label
@@ -208,8 +209,8 @@ function drawBarChart(value, data) {
     .attr("x", width / 2 + 100)
     .attr("y", height - 15 + 150)
     .attr("text-anchor", "middle")
-    .style("font-family", "Helvetica")
-    .style("font-size", 12)
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
     .text(value);
 
   // Y label
@@ -217,52 +218,20 @@ function drawBarChart(value, data) {
     .append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate(60," + height + ")rotate(-90)")
-    .style("font-family", "Helvetica")
-    .style("font-size", 12)
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
     .text("count");
 
-    function onMouseOver(d, i) {
-        //console.log(countFrequency(d)[1])
-        console.log([d.length])
-        document.getElementById('count').innerHTML = countFrequency(d)[1]
-        // d3.select(this).attr('class', 'highlight');
-        // d3.select(this)
-        // // var x = d3.scaleBand()
-        // // .range([ 0, width ])
-        // //   .domain(data.map(function(d) { return d.STATE; }))
-        // //   .padding(0.2);
-        // // console.log(x)
-        
-        // // var margin = {top: 10, right: 30, bottom: 90, left: 40},
-        // //     width = 700 - margin.left - margin.right,
-        // //     height = 450 - margin.top - margin.bottom;
-      
-        // // var x = d3.scaleBand().range([0, width]).padding(0.2),
-        // // y = d3.scaleLinear().range([height, 0]);
-        // g.append("text")
-        //  .attr('class', 'val') 
-        //  .attr('y', function() {
-        //      return height-yScale(d);
-        //  })
-        //  .attr("x", function() {
-        //     return xScale(d);
-        // })
-        //  .text(function() {
-        //      return [d.length()];  // Value of the text
-        //  });
-        }
-        
-        //mouseout event handler function
-    function onMouseOut(d, i) {
-        // use the text label class to remove label on mouseout
-        d3.select(this).attr('class', 'bar');
-        d3.select(this)
-          .transition()     // adds animation
-          .duration(400)
-          
-          d3.selectAll('.val')
-          .remove()
-        }
+  //mouseout event handler function
+  function onMouseOut(d, i) {
+    // use the text label class to remove label on mouseout
+    d3.select(this).attr("class", "bar");
+    d3.select(this)
+      .transition() // adds animation
+      .duration(400);
+
+    d3.selectAll(".val").remove();
+  }
 }
 function drawBarChart_horizontal(value, data) {
   $("svg").children().remove();
@@ -316,30 +285,33 @@ function drawBarChart_horizontal(value, data) {
     .attr("y", function (d) {
       return yScale(d);
     })
+    .transition()
+    .duration(1000)
     .attr("width", function (d) {
       return xScale(d);
     })
     .attr("height", yScale.bandwidth())
-    .attr('count', function(d){
-        return d
+    .attr("count", function (d) {
+      return d;
     });
 
-    $('rect').hover(function(){
-        $('.text-class').css('visibility','visible')
-        $('#count').text($(this).attr('count'))
+  $("rect").hover(
+    function () {
+      $(".text-class").css("visibility", "visible");
+      $("#count").text($(this).attr("count"));
     },
-    function(){
-        $('.text-class').css('visibility','hidden')
-        $('#count').text('')
-    })
+    function () {
+      $(".text-class").css("visibility", "hidden");
+      $("#count").text("");
+    }
+  );
 
-    
   svg
     .append("text")
     .attr("x", width / 2 + 100)
     .attr("y", 100)
     .attr("text-anchor", "middle")
-    .style("font-family", "Helvetica")
+    .style("font-family", "Times New Roman")
     .style("font-size", 20)
     .text("Bar Plot");
 
@@ -349,8 +321,8 @@ function drawBarChart_horizontal(value, data) {
     .attr("x", width / 2 + 100)
     .attr("y", height - 15 + 150)
     .attr("text-anchor", "middle")
-    .style("font-family", "Helvetica")
-    .style("font-size", 12)
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
     .text("count");
 
   // Y label
@@ -358,8 +330,8 @@ function drawBarChart_horizontal(value, data) {
     .append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate(20," + height + ")rotate(-90)")
-    .style("font-family", "Helvetica")
-    .style("font-size", 12)
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
     .text(value);
 }
 
@@ -383,13 +355,16 @@ function drawHistogram(value) {
   // X axis: scale and draw:
   var x = d3
     .scaleLinear()
+    .range([0, width])
     .domain([
-      0,
+        d3.min(barData, function(d){
+            return parseInt(d)- 5;
+        }),
       d3.max(barData, function (d) {
         return parseInt(d) + 5;
       }),
-    ]) // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
-    .range([0, width]);
+    ]); // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
+    
   g.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
@@ -404,13 +379,13 @@ function drawHistogram(value) {
     .thresholds(x.ticks(50)); // then the numbers of bins
 
   // And apply this function to data to get the bins
-  var bins = histogram(barData);
+  var bins1 = histogram(barData);
 
   // Y axis: scale and draw:
   var y = d3.scaleLinear().range([height, 0]);
   y.domain([
     0,
-    d3.max(bins, function (d) {
+    d3.max(bins1, function (d) {
       return d.length + 10;
     }),
   ]); // d3.hist has to be called before the Y axis obviously
@@ -419,10 +394,12 @@ function drawHistogram(value) {
 
   // append the bar rectangles to the svg element
   g.selectAll(".bar")
-    .data(bins)
+    .data(bins1)
     .enter()
     .append("rect")
     .attr("id", "bar")
+    //.on("mouseover", onMouseOver) //Add listener for the mouseover event
+    //.on("mouseout", onMouseOut) //Add listener for the mouseout event
     .attr("x", 1)
     .attr("transform", function (d) {
       return "translate(" + x(d.x0) + "," + y(d.length) + ")";
@@ -430,19 +407,34 @@ function drawHistogram(value) {
     .attr("width", function (d) {
       return x(d.x1) - x(d.x0);
     })
+    .transition()
+    .duration(1000)
     .attr("height", function (d) {
       return height - y(d.length) - 1;
     })
-    .style("fill", "#69b3a2");
-
-
     
+    .style("fill", "#69b3a2").attr("count", function (d) {
+        return d.length;
+      });
+  
+    $("rect").hover(
+      function () {
+        $(".text-class").css("visibility", "visible");
+        $("#count").text($(this).attr("count"));
+      },
+      function () {
+        $(".text-class").css("visibility", "hidden");
+        $("#count").text("");
+      }
+    );
+  
+
   svg
     .append("text")
     .attr("x", width / 2 + 100)
     .attr("y", 100)
     .attr("text-anchor", "middle")
-    .style("font-family", "Helvetica")
+    .style("font-family", "Times New Roman")
     .style("font-size", 20)
     .text("Histogram Plot");
   // X label
@@ -451,8 +443,8 @@ function drawHistogram(value) {
     .attr("x", width / 2 + 100)
     .attr("y", height - 15 + 150)
     .attr("text-anchor", "middle")
-    .style("font-family", "Helvetica")
-    .style("font-size", 12)
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
     .text(value);
 
   // Y label
@@ -460,9 +452,38 @@ function drawHistogram(value) {
     .append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate(60," + height + ")rotate(-90)")
-    .style("font-family", "Helvetica")
-    .style("font-size", 12)
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
     .text("count");
+
+  function onMouseOver(d, i) {
+    console.log(d.length);
+    d3.select(this).attr("class", "highlight");
+    d3.select(this)
+    svg
+      .append("text")
+      .attr("class", "val")
+      .attr("y", function () {
+        return y(d.length) - 3;
+      })
+      .attr("x", function () {
+        return x(d.x0);
+      })
+      .text(function () {
+        return [d.length]; // Value of the text
+      });
+  }
+
+  //mouseout event handler function
+  function onMouseOut(d, i) {
+    // use the text label class to remove label on mouseout
+    d3.select(this).attr("class", "bar");
+    d3.select(this)
+      .transition() // adds animation
+      .duration(400);
+
+    d3.selectAll(".val").remove();
+  }
 }
 function drawHistogram_horizontal(value) {
   $("svg").children().remove();
@@ -483,7 +504,9 @@ function drawHistogram_horizontal(value) {
 
   var y = d3.scaleLinear().range([height, 0]);
   y.domain([
-    0,
+    d3.min(barData, function(d){
+        return parseInt(d)- 5;
+    }),
     d3.max(barData, function (d) {
       return parseInt(d) + 5;
     }),
@@ -528,20 +551,36 @@ function drawHistogram_horizontal(value) {
     .attr("transform", function (d) {
       return "translate(0," + y(d.x1) + ")";
     })
+    .transition()
+    .duration(1000)
     .attr("width", function (d) {
       return x(d.length);
     })
     .attr("height", function (d) {
       return y(d.x0) - y(d.x1) - 1;
     })
-    .style("fill", "#69b3a2");
+    .style("fill", "#69b3a2").attr("count", function (d) {
+        return d.length;
+      });
+  
+    $("rect").hover(
+      function () {
+        $(".text-class").css("visibility", "visible");
+        $("#count").text($(this).attr("count"));
+      },
+      function () {
+        $(".text-class").css("visibility", "hidden");
+        $("#count").text("");
+      }
+    );
+  
 
   svg
     .append("text")
     .attr("x", width / 2 + 100)
     .attr("y", 100)
     .attr("text-anchor", "middle")
-    .style("font-family", "Helvetica")
+    .style("font-family", "Times New Roman")
     .style("font-size", 20)
     .text("Histogram Plot");
   // X label
@@ -550,8 +589,8 @@ function drawHistogram_horizontal(value) {
     .attr("x", width / 2 + 100)
     .attr("y", height - 15 + 150)
     .attr("text-anchor", "middle")
-    .style("font-family", "Helvetica")
-    .style("font-size", 12)
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
     .text("count");
 
   // Y label
@@ -559,8 +598,8 @@ function drawHistogram_horizontal(value) {
     .append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate(40," + height + ")rotate(-90)")
-    .style("font-family", "Helvetica")
-    .style("font-size", 12)
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
     .text(value);
 }
 
@@ -581,4 +620,3 @@ function countFrequency(array) {
 
   return [a, b];
 }
-

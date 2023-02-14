@@ -5,7 +5,6 @@ async function myFunction() {
 var numerical_list = [
   "age",
   "overall",
-  "wage_eur",
   "height_cm",
   "weight_kg",
   "pace",
@@ -25,6 +24,7 @@ var numerical_list = [
   "mentality_interceptions",
   "mentality_vision",
   "mentality_penalties",
+  "wage_eur",
 ];
 var categorical_list = [
   "league_level",
@@ -39,18 +39,19 @@ var yValue = "";
 myFunction().then(function (value) {
   var xValue = "";
   var yValue = "";
-  for (var i = 0; i < numerical_list.length; i++) {
-    const node = document.createElement("a");
-    const textnode = document.createTextNode(numerical_list[i]);
-    node.appendChild(textnode);
-    document.getElementById("scatterList").appendChild(node);
-  }
   for (var i = 0; i < categorical_list.length; i++) {
     const node = document.createElement("a");
     const textnode = document.createTextNode(categorical_list[i]);
     node.appendChild(textnode);
     document.getElementById("scatterList").appendChild(node);
   }
+  for (var i = 0; i < numerical_list.length; i++) {
+    const node = document.createElement("a");
+    const textnode = document.createTextNode(numerical_list[i]);
+    node.appendChild(textnode);
+    document.getElementById("scatterList").appendChild(node);
+  }
+ 
 
   $("#scatterList")
     .children()
@@ -76,7 +77,7 @@ myFunction().then(function (value) {
   //     $(".xAxis").append('<input type="radio" id="' + categorical_list[i] + '" name="xAxis" value="' + categorical_list[i] + '"><label for="' + categorical_list[i] + '">' + categorical_list[i] + '</label><br>');
   //     $(".yAxis").append('<input type="radio" id="' + categorical_list[i] + '" name="yAxis" value="' + categorical_list[i] + '"><label for="' + categorical_list[i] + '">' + categorical_list[i] + '</label><br>');
   // }
-  thisList = ["x-axis", "y-axis"];
+  thisList = ["X-Axis", "Y-Axis"];
   for (var i = 0; i < thisList.length; i++) {
     $(".xAxis").append(
       '<input type="radio" id="' +
@@ -272,7 +273,7 @@ function scatterPlot(xValue, yValue, data) {
     .attr("x", width / 2 + 100)
     .attr("y", 50)
     .attr("text-anchor", "middle")
-    .style("font-family", "Helvetica")
+    .style("font-family", "Times New Roman")
     .style("font-size", 20)
     .text("Scatter Plot");
 
@@ -282,16 +283,16 @@ function scatterPlot(xValue, yValue, data) {
     .attr("x", width / 2 + 100)
     .attr("y", height - 15 + 150)
     .attr("text-anchor", "middle")
-    .style("font-family", "Helvetica")
-    .style("font-size", 12)
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
     .text(xValue);
   // Y label
   svg
     .append("text")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(60," + height + ")rotate(-90)")
-    .style("font-family", "Helvetica")
-    .style("font-size", 12)
+    .attr("transform", "translate(40," + height + ")rotate(-90)")
+    .style("font-family", "Times New Roman")
+    .style("font-size", 20)
     .text(yValue);
 
   // Step 6
@@ -308,6 +309,7 @@ function scatterPlot(xValue, yValue, data) {
     .data(scatterData)
     .enter()
     .append("circle")
+    .transition().duration(1000)
     .attr("cx", function (d) {
       return xScale(d[0]);
     })
@@ -383,8 +385,10 @@ function scatterPlot_categorical(xValue, yValue, data) {
       .attr("x", width / 2 + 100)
       .attr("y", 50)
       .attr("text-anchor", "middle")
-      .style("font-family", "Helvetica")
+      .style("font-family", "Times New Roman")
       .style("font-size", 20)
+      .style("padding", "7px")
+      .style("background-color", "#03f79e")
       .text("Scatter Plot");
   
     // X label
@@ -393,16 +397,16 @@ function scatterPlot_categorical(xValue, yValue, data) {
       .attr("x", width / 2 + 100)
       .attr("y", height - 15 + 150)
       .attr("text-anchor", "middle")
-      .style("font-family", "Helvetica")
-      .style("font-size", 12)
+      .style("font-family", "Times New Roman")
+      .style("font-size", 20)
       .text(xValue);
     // Y label
     svg
       .append("text")
       .attr("text-anchor", "middle")
       .attr("transform", "translate(30," + height + ")rotate(-90)")
-      .style("font-family", "Helvetica")
-      .style("font-size", 12)
+      .style("font-family", "Times New Roman")
+      .style("font-size", 20)
       .text(yValue);
   
     // Step 6
@@ -419,6 +423,7 @@ function scatterPlot_categorical(xValue, yValue, data) {
       .data(scatterData)
       .enter()
       .append("circle")
+      .transition().duration(1000)
       .attr("cx", function (d) {
         return xScale(d[0])+Math.random()*10-5;
       })

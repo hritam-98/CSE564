@@ -43,6 +43,12 @@
         .dropdown:hover .dropdown-content {display: block;}
 
         .dropdown:hover .dropbtn {background-color: #8e3e4d;}
+        body{
+            background-color: antiquewhite;
+            width: 80%;
+            margin: auto;
+        }
+    
     </style>
     <!-- <style>
         .dropbtn {
@@ -84,31 +90,35 @@
         
         .show {display: block;}
     </style> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
 </head>
 
 <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <h2 style="text-align: center; padding: 5px; background-color: #eaf510; color: rgb(16, 1, 1);">FIFA22 player data analysis</h2>
     <div style="text-align: center;margin-top: 50px;">
-        <a href="./index.html">Show Bar and Histogram Plot</a>
+        <a href="./index.html" style="background-color: #03f79e; padding: 7px; text-decoration: none;font-size: large;">Show Bar and Histogram Plot</a>
     </div>
     <div class="d3sucks">
-        <h6>Select attribute first and then select x or y axis</h6>
+        <h3>Select attribute first</h3> 
     <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn" data-toggle="dropdown">Select attribuets</button>
-        <div class="dropdown-content" id="scatterList"></div>
+        <div class="dropdown-content" id="scatterList" ></div>
     </div>
 
     <div class="xAxis">
-        <h5>Selected attribute</h5><h5 class="x-text">----</h5><h5>Now select the axis</h5>
+        <h3>Selected attribute</h5><h5 class="x-text" style="font-size: large;">----</h3>
+        <h3>Now select the axis</h3>
     </div>
 
     <!-- <div class="yAxis">
         <h5 class="y-text">--Selected attribute--</h5>
     </div> -->
     <div class="text">
-        <h6>Selected x attribute</h6><h6 class="selected_x">----</h6>
-        <h6>Selected y-attribute</h6><h6 class="selected_y">----</h6>
+        <h3>Selected X-Attribute</h3><h3 class="selected_x">----</h3>
+        <h3>Selected Y-Attribute</h3><h3 class="selected_y">----</h3>
     </div>
 
     <div class="bar">
