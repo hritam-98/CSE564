@@ -1,1 +1,1 @@
-# cse564lab1
+# CSE564 Visualization
