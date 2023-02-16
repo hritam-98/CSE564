@@ -117,12 +117,7 @@ myFunction().then(function (value) {
     });
 });
 
-// $('input[type=radio][name=xAxis]').change(function () {
-//     xValue = this.value;
-//     if (yValue != "") {
-//         scatterPlot(xValue, yValue, data);
-//     }
-// });
+
 function drawBarChart(value, data) {
   $("svg").children().remove();
   //document.getElementById("bar").innerHTML="";
@@ -519,6 +514,8 @@ function drawHistogram(value) {
     d3.selectAll(".val").remove();
   }
 }
+
+
 function drawHistogram_horizontal(value) {
   $("svg").children().remove();
   //console.log(value)

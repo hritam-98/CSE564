@@ -33,15 +33,54 @@ var categorical_list = [
   "work_rate",
 ];
 
-var count = 0;
-var count1 = 0;
 var xValue = "";
 var yValue = "";
 
 
 myFunction().then(function (value) {
-  var xValue = "";
-  var yValue = "";
+  var selected_x = "";
+  var selected_y = "";
+  var count= "";
+  //var count_y = "";
+  thisList = ["X-Axis", "Y-Axis"];
+  for (var i = 0; i < thisList.length; i++) {
+    $(".xAxis").append(
+      '<input type="radio" id="' +
+        thisList[i] +
+        '1" name="xAxis" value="' +
+        thisList[i] +
+        '"><label for="' +
+        thisList[i] +
+        '1">' +
+        thisList[i] +
+        "</label><br>"
+    );
+    //$(".yAxis").append('<input type="radio" id="' + thisList[i] + '2" name="yAxis" value="' + thisList[i] + '"><label for="' + thisList[i] + '2">' + thisList[i] + '</label><br>');
+  }
+
+  $("input[type=radio][name=xAxis]").change(function () {
+    //xValue = this.value;
+    //console.log(xValue)
+    //count1++;
+    $(".x-text").text(this.value);
+    count = this.value;
+    // if (this.value == "X-Axis") {
+    //   count = this.value;
+    //   //$(".selected_x").text(xValue);                 add it in dropdown
+    // } else if (this.value == "Y-Axis") {
+    //   count = this.value;
+    //   //$(".selected_y").text(yValue);                 add it in dropdown
+    // }
+    // if (xValue != "" && yValue != "") {
+    //   if (numerical_list.includes(xValue) || numerical_list.includes(yValue)) {
+    //     scatterPlot(xValue, yValue, data);
+    //   } else {
+    //     scatterPlot_categorical(xValue, yValue, data);
+    //   }
+    // }
+  });
+  //var xValue = "";
+  //var yValue = "";
   for (var i = 0; i < categorical_list.length; i++) {
     const node = document.createElement("a");
     const textnode = document.createTextNode(categorical_list[i]);
@@ -60,59 +99,43 @@ myFunction().then(function (value) {
     .click(function (e) {
       //console.log(e.currentTarget.innerHTML)
       $("input[type=radio][name = xAxis]").prop("checked", false);
-      $(".x-text").text(e.currentTarget.innerHTML);
-      text = e.currentTarget.innerHTML;
-      if (count % 2 == 0) {
-        first_text = e.currentTarget.innerHTML;
-        //console.log(first_text)
-        //$('.x-text').text(e.currentTarget.innerHTML)
-      } else {
-        second_text = e.currentTarget.innerHTML;
-        //console.log(second_text)
-        //$('.selected_y').text(e.currentTarget.innerHTML)
+
+      
+      if (count == 'X-Axis' ) {
+        var selected_text = e.currentTarget.innerHTML;
+        selected_x = selected_text;
+        $(".selected_x").text(selected_text);
       }
+      if (count == 'Y-Axis' ) {
+        var selected_text = e.currentTarget.innerHTML;
+        selected_y = selected_text;
+        $(".selected_y").text(selected_y);
+      }
+      if (selected_x != "" && selected_y != '') {
+        if (
+          numerical_list.includes(selected_x) ||
+          numerical_list.includes(selected_y)
+        ) {
+          scatterPlot(selected_x, selected_y, data);
+        } else {
+          scatterPlot_categorical(selected_x, selected_y, data);
+        }
+      }
+
+      // if (count % 2 == 0) {
+      //   first_text = e.currentTarget.innerHTML;
+      //   //console.log(first_text)
+      //   //$('.x-text').text(e.currentTarget.innerHTML)
+      // } else {
+      //   second_text = e.currentTarget.innerHTML;
+      //   //console.log(second_text)
+      //   //$('.selected_y').text(e.currentTarget.innerHTML)
+      // }
       count++;
     });
+
   data = value;
-
-  thisList = ["X-Axis", "Y-Axis"];
-  for (var i = 0; i < thisList.length; i++) {
-    $(".xAxis").append(
-      '<input type="radio" id="' +
-        thisList[i] +
-        '1" name="xAxis" value="' +
-        thisList[i] +
-        '"><label for="' +
-        thisList[i] +
-        '1">' +
-        thisList[i] +
-        "</label><br>"
-    );
-    //$(".yAxis").append('<input type="radio" id="' + thisList[i] + '2" name="yAxis" value="' + thisList[i] + '"><label for="' + thisList[i] + '2">' + thisList[i] + '</label><br>');
-  }
-  $("input[type=radio][name=xAxis]").change(function () {
-    //xValue = this.value;
-    //console.log(xValue)
-    count1++;
-    if (this.value == "X-Axis") {
-      xValue = text;
-      $(".selected_x").text(xValue);
-    } else {
-      yValue = text;
-      $(".selected_y").text(yValue);
-    }
-    if (xValue != "" && yValue != "") {
-      if (numerical_list.includes(xValue) || numerical_list.includes(yValue)) {
-        scatterPlot(xValue, yValue, data);
-      } else {
-        scatterPlot_categorical(xValue, yValue, data);
-      }
-    }
-  });
-
 });
-
-
 
 function scatterPlot(xValue, yValue, data) {
   console.log(xValue, yValue);
@@ -180,12 +203,13 @@ function scatterPlot(xValue, yValue, data) {
     .attr("text-anchor", "middle")
     .style("font-family", "Serif")
     .style("font-size", 20)
-    .style("font-weight", 'bold')
+    .style("font-weight", "bold")
     .text(
       "Scatter plot of attribute: '"
         .concat(xValue)
         .concat("' vs. attribute: '")
-        .concat(yValue).concat("'")
+        .concat(yValue)
+        .concat("'")
     );
 
   // X label
@@ -196,7 +220,7 @@ function scatterPlot(xValue, yValue, data) {
     .attr("text-anchor", "middle")
     .style("font-family", "Serif")
     .style("font-size", 20)
-    .style("font-weight", 'bold')
+    .style("font-weight", "bold")
     .text(xValue);
   // Y label
   svg
@@ -205,7 +229,7 @@ function scatterPlot(xValue, yValue, data) {
     .attr("transform", "translate(40," + height + ")rotate(-90)")
     .style("font-family", "Serif")
     .style("font-size", 20)
-    .style("font-weight", 'bold')
+    .style("font-weight", "bold")
     .text(yValue);
 
   // Step 6
@@ -234,9 +258,6 @@ function scatterPlot(xValue, yValue, data) {
     .attr("transform", "translate(" + 100 + "," + 100 + ")")
     .style("fill", "#CC0000");
 }
-
-
-
 
 function scatterPlot_categorical(xValue, yValue, data) {
   console.log(xValue, yValue);
@@ -306,12 +327,13 @@ function scatterPlot_categorical(xValue, yValue, data) {
     .style("font-size", 20)
     .style("padding", "7px")
     .style("background-color", "#03f79e")
-    .style("font-weight", 'bold')
+    .style("font-weight", "bold")
     .text(
       "Scatter plot of attribute: '"
         .concat(xValue)
         .concat("' vs. attribute: '")
-        .concat(yValue).concat("'")
+        .concat(yValue)
+        .concat("'")
     );
 
   // X label
@@ -321,7 +343,7 @@ function scatterPlot_categorical(xValue, yValue, data) {
     .attr("y", height - 5 + 150)
     .attr("text-anchor", "middle")
     .style("font-family", "Serif")
-    .style("font-weight", 'bold')
+    .style("font-weight", "bold")
     .style("font-size", 20)
     .text(xValue);
   // Y label
@@ -331,7 +353,7 @@ function scatterPlot_categorical(xValue, yValue, data) {
     .attr("transform", "translate(30," + height + ")rotate(-90)")
     .style("font-family", "Serif")
     .style("font-size", 20)
-    .style("font-weight", 'bold')
+    .style("font-weight", "bold")
     .text(yValue);
 
   // Step 6
