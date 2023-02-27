@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSE 564 Lab 2a</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script src="../static/screeplot.js"></script>
+    <script src="../static/biplot.js"></script>
+    <script src="../static/elbowplot.js"></script>
+    <script src="../static/kmeans.js"></script>
+    <script src="../static/scatter.js"></script>
+    <script type="text/javascript">
+      var dataissue = {{data | tojson}};
+      var diction = dataissue.diction
+      var diction1 = dataissue.diction1
+      var pcareturn = dataissue.pcareturn
+      var scatterplotmatrix = dataissue.scatterplotmatrix
+      var avg = dataissue.avg
+      var xx = dataissue.xx
+      var yy = dataissue.yy
+      var labels = dataissue.labels
+      var a1 = dataissue.a1
+      var b1 = dataissue.b1
+      var aa1 = dataissue.aa1
+      var bb1 = dataissue.bb1
+    </script>
+    <script src="../static/index.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="header">
+        <img
+          class="logo"
+          src="../static/images/fifa22.jpg"
+          height="114"
+          width="250"
+        />
+        <h1
+          style="
+            margin-top: 0;
+            color: darkcyan;
+            font-weight: bolder;
+            vertical-align: middle;
+          "
+        >
+          FIFA22 PLAYERS DATA ANALYSIS
+        </h1>
+      </div>
+    </header>
+
+    <ul>
+      <li><a id="btnScree" href="#" onclick="fnScree()">Scree Plot</a></li>
+      <li><a id="btnbiplot" href="#" onclick="fnbiplot()">Biplot</a></li>
+      <li>
+        <a id="btnscatterplot" href="#" onclick="fnscatterplot()"
+          >Scatterplot Matrix</a
+        >
+      </li>
+      <li><a id="btnelbow" href="#" onclick="fnelbow()">Elbow Plot</a></li>
+      <li>
+        <a id="btnkmeans" href="#" onclick="fnkmeans()">K-Means Clustering</a>
+      </li>
+    </ul>
+
+    <div id="svgContainer" class="svgContainer">
+      <svg id="mysvg" width="1000" height="500"></svg>
+    </div>
+  </body>
+</html>
