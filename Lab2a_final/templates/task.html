@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<title>FIFA22 Player Data Analysis</title>
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+
+<script src="./index.js"></script>
+
+<title> FIFA22 Player Data Analysis </title>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/task.css') }}">
+
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
+<!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+
+<script src="./static/{{taskJS}}.js"></script>
+<script src="./static/task2a_2.js"></script>
+<style>
+  body{
+        background-color: antiquewhite;
+        width: 80%;
+        margin: auto;
+    }
+</style>
+</head>
+<body>
+    <h1 style="text-align: center; padding: 5px; background-color: #eaf510; color: rgb(16, 1, 1);">FIFA22 Player Data analysis</h1>
+    <!-- <h3 class="barhead">On this website, we can analyze the correlation between different attributes of the 2019 Indian general election contestants through visualization. This webpage is designed to analyze PCA Scree plot, Scatterplot matrix, Biplot, and K means visualization.</h3> -->
+    <nav class="stroke">
+      <ul style="text-align: center;margin-top: 50px;margin-left: 200px;">
+        <li><a href="screeplot">Scree plot and Scatter Plot</a></li>
+        <!-- <li><a href="scatterplotmatrix">Scatterplot Matrix</a></li> -->
+        <li><a href="biplot">Biplot</a></li>
+        <li><a href="elbowplot">K means visualization</a></li>
+      </ul>
+    </nav>
+
+
+    <div class="container">
+
+        <div id="Attribute">
+            <span id="variable"></span>
+        </div>
+        <div id="svgElement">
+            
+        
+        </div>
+        <svg width="800" height="500" id="my_bar_chart"></svg>
+        <div id="chart"></div>
+        <div id="tooltip" class="tooltip"></div>
+        <div id ="di"> </div>
+        <!-- <div id ="di1"> </div> -->
+        <div class='kkk'><div id="theader"></div><table id="di1"></table></div>
+
+        <div id="title"></div>
+
+        <svg width="1500" height="800" id="scatterplot_matrix"></svg>
+        <div id="kiki"></div>
+  
+        <script>
+        // var data = {{data | safe}};
+        // {{taskJS}}(data);
+        {{taskJS}}();
+        </script>
+        
+  </body>
+  </html>
+
+

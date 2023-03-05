@@ -1,0 +1,118 @@
+
+
+<!doctype html>
+<html>
+<head>
+<title>FIFA22 Player Data analysis</title>
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+
+<script src="./index.js"></script>
+
+<title> FIFA22 Player Data Analysis </title>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/task.css') }}">
+
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
+
+
+<script src="./static/{{taskJS}}.js"></script>
+<style>
+
+svg {
+  font: 10px sans-serif;
+  padding: 10px;
+}
+
+.axis,
+.frame {
+  shape-rendering: crispEdges;
+}
+
+.axis line {
+  stroke: #ddd;
+}
+
+.axis path {
+  display: none;
+}
+
+.cell text {
+  font-weight: bold;
+  text-transform: capitalize;
+  fill: black;
+}
+
+.frame {
+  fill: none;
+  stroke: #aaa;
+}
+
+circle {
+  fill-opacity: .7;
+}
+
+circle.hidden {
+  fill: #ccc !important;
+}
+
+.extent {
+  fill: #000;
+  fill-opacity: .125;
+  stroke: #fff;
+}
+/* <style> */
+      body{
+            background-color: antiquewhite;
+            width: 80%;
+            margin: auto;
+        }
+    /* </style> */
+</style>
+
+
+</head>
+<body>
+  <h1 style="text-align: center; padding: 5px; background-color: #eaf510; color: rgb(16, 1, 1);">FIFA22 Player Data Analysis</h1>
+  <!-- <h3 class="barhead">On this website, we can analyze the correlation between different attributes of the 2019 Indian general election contestants through visualization. This webpage is designed to analyze PCA Scree plot, Scatterplot matrix, Biplot, and K means visualization.</h3> -->
+  <nav class="stroke">
+    <ul style="text-align: center;margin-top: 50px;margin-left: 200px;">
+      <li><a href="screeplot">Scree plot and Scatter Plot</a></li>
+      <!-- <li><a href="scatterplotmatrix">Scatterplot Matrix</a></li> -->
+      <li><a href="biplot">Biplot</a></li>
+      <li><a href="elbowplot">K means visualization</a></li>
+    </ul>
+  </nav>
+
+
+  <div class="container">
+
+    <!-- <center>In Task {{taskJS}}</center> -->
+    <div id="Attribute">
+        <span id="variable"></span>
+    </div>
+    <div id="title" ></div>
+
+      <svg width="1500" height="800" id="my_bar_chart"></svg>
+      <div id="kiki"></div>
+
+    </div>
+    <script>
+    var data = {{data | safe}};
+    var color_indices = {{color_indices | safe}};
+    {{taskJS}}(data, color_indices);
+    </script>
+
+</body>
+</html>
+
+
+
+

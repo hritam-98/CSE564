@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<title>FIFA22 Player Data Analysis</title>
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="./index.js"></script>
+<style>
+  body{
+        background-color: antiquewhite;
+        width: 80%;
+        margin: auto;
+    }
+</style>
+</head>
+<body>
+  <h1 style="text-align: center; padding: 5px; background-color: #eaf510; color: rgb(16, 1, 1);">FIFA22 Player Data Analysis</h1>
+  <!-- <h3 class="barhead">On this website, we can analyze the correlation between different attributes of the 2019 Indian general election contestants through visualization. This webpage is designed to analyze PCA Scree plot, Scatterplot Matrix, Biplot, and K means visualization.</h3> -->
+  <nav class="stroke">
+    <ul style="text-align: center;margin-top: 50px;margin-left: 200px;">
+      <li><a href="screeplot">Scree plot and Scatter Plot</a></li>
+      <!-- <li><a href="scatterplotmatrix">Scatterplot Matrix</a></li> -->
+      <li><a href="biplot">Biplot</a></li>
+      <li><a href="elbowplot">K means visualization</a></li>
+    </ul>
+  </nav>
+</body>
+</html>

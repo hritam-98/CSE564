@@ -1,0 +1,481 @@
+/* .bar {
+    fill: purple;
+} */
+body{
+  font-family: 'Times New Roman', Times, serif !important
+  ;
+}
+.highlight {
+    fill: #4fb9af;
+}
+circle:hover{
+  fill:#10eaf5 !important;
+}
+.dot:hover{
+  fill:#10eaf5 !important;
+}
+
+h1{
+  background-image:conic-gradient(#553c9a 30%, #ee4b2b 40%, #ee4b2b 70%, teal 80%, #553c9a);
+  text-align: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+    align-items: center;
+    display: block;
+    text-align: center;
+
+    display: block;
+    font-size: 32px !important;
+
+    font-weight: bold !important;
+
+}
+/* Follow me for more pens like this! */
+    /* Style The Dropdown Button */
+    .dropbtn {
+      font-family: 'Times New Roman', Times, serif;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        background-image:conic-gradient(
+    #553c9a 0%, #553c9a 33%, #ee4b2b 33%, #ee4b2b 66%, teal 66%, #00c2cb 99%
+      );
+        /* color: white; */
+        padding: 16px 18px;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        border-radius: 12px;
+       
+      }
+      .dropbtn:hover{
+        background-color: blue;
+      }
+      /* The container <div> - needed to position the dropdown content */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      /* Dropdown Content (Hidden by Default) */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      /* Change color of dropdown links on hover */
+      .dropdown-content a:hover {background-color: #f1f1f1}
+      
+      /* Show the dropdown menu on hover */
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      
+      /* Change the background color of the dropdown button when the dropdown content is shown */
+      .dropdown:hover .dropbtn {
+        background-color: teal;
+      }
+
+      #toTop {
+        position:   absolute;
+        top:        150px;
+        left:       20px;
+        text-align: left;
+    }
+
+      #toTop2 {
+        position:   absolute;
+        top:        150px;
+        left:       220px;
+        text-align: left;
+    }
+      #toTop3 {
+        position:   absolute;
+        top:        150px;
+        left:       420px;
+        text-align: left;
+    }
+    #toTop4 {
+      position:   absolute;
+      top:        150px;
+      left:       620px;
+      text-align: left;
+    }
+    .radio{
+      position:   absolute;
+        top:        169px;
+        left:       250px;
+        text-align: left;
+        font-size: 14px;
+
+    }
+
+    #my_bar_chart{
+        text-align: center;
+        display: block;
+        margin: auto;
+        width: 50%;
+        /* border: 1px solid teal; */
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        margin-top: 120px;
+        align-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    #histogram{
+        text-align: center;
+        display: block;
+        margin: auto;
+        width: 50%;
+        /* border: 1px solid teal; */
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        margin-top: 120px;
+        align-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    #bar_chart_hor{
+      text-align: center;
+      display: block;
+      margin: auto;
+      width: 50%;
+      /* border: 1px solid teal; */
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      margin-top: 120px;
+      align-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    #scatter_jitter{
+      text-align: center;
+      display: block;
+      margin: auto;
+      width: 50%;
+      /* border: 1px solid teal; */
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      margin-top: 120px;
+      align-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+
+    #scatter_simple{
+      text-align: center;
+      display: block;
+      margin: auto;
+      width: 50%;
+      /* border: 1px solid teal; */
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      margin-top: 120px;
+      align-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+
+
+    .dot {
+      stroke: #000;
+      fill: teal;
+    }
+
+#link{
+  position:absolute;
+  top:        150px;
+  right:       20px;
+  text-align: left;
+  
+}
+
+a#linka{
+  text-decoration: none;
+  color: teal;
+  }
+
+
+  
+ul li {
+  color: teal;
+  margin: 5px;
+}
+
+#header,#attr{
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image:conic-gradient(
+#553c9a 0%, #553c9a 33%, #ee4b2b 33%, #ee4b2b 66%, teal 66%, #00c2cb 99%
+);
+  /* color: white; */
+  font-size: 18px;
+  /* background-image: url(./rocket.avif);
+  background-size: 250px;
+  background-repeat: repeat;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text; */
+}
+
+h3.barhead{
+
+  margin-left:200px;
+  margin-right:200px;
+
+  background-image: conic-gradient(#553c9a, #ee4b2b, teal, #553c9a);
+  text-align: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+
+  display: block;
+  font-size: 1.17em;
+  /* margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px; */
+  font-weight: bold;
+
+}
+
+
+
+
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+small {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+
+.center {
+  text-align: center;
+}
+
+section {
+  height: 100vh;
+}
+
+/* NAVIGATION */
+nav {
+  width: 80%;
+  margin: 0 auto;
+  background: #fff;
+  /* padding: 50px 0; */
+  box-shadow: 0px 5px 0px #dedede;
+}
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 0 10px;
+
+  font-family: 'Times New Roman', Times, serif;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image:conic-gradient(
+#553c9a 0%, #553c9a 33%, #ee4b2b 33%, #ee4b2b 66%, teal 66%, #00c2cb 99%
+);
+
+
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav ul li a:hover {
+  color: #555;
+}
+
+
+/* stroke */
+nav.stroke ul li a,
+nav.fill ul li a {
+  position: relative;
+}
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+nav.fill ul li a {
+  transition: all 2s;
+}
+
+nav.fill ul li a:after {
+  text-align: left;
+  content: '.';
+  margin: 0;
+  opacity: 0;
+}
+nav.fill ul li a:hover {
+  color: #fff;
+  z-index: 1;
+}
+nav.fill ul li a:hover:after {
+  z-index: -10;
+  animation: fill 1s forwards;
+  -webkit-animation: fill 1s forwards;
+  -moz-animation: fill 1s forwards;
+  opacity: 1;
+}
+
+/* Circle */
+nav.circle ul li a {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+nav.circle ul li a:after {
+  display: block;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: '.';
+  color: transparent;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+}
+nav.circle ul li a:hover:after {
+  -webkit-animation: circle 1.5s ease-in forwards;
+}
+
+/* SHIFT */
+nav.shift ul li a {
+  position:relative;
+  z-index: 1;
+}
+nav.shift ul li a:hover {
+  color: #91640F;
+}
+nav.shift ul li a:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 1px;
+  content: '.';
+  color: transparent;
+  background: #F1C40F;
+  visibility: none;
+  opacity: 0;
+  z-index: -1;
+}
+nav.shift ul li a:hover:after {
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+}
+
+
+
+/* Keyframes */
+@-webkit-keyframes fill {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background: #333;
+  }
+}
+
+/* Keyframes */
+@-webkit-keyframes circle {
+  0% {
+    width: 1px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    height: 1px;
+    z-index: -1;
+    background: #eee;
+    border-radius: 100%;
+  }
+  100% {
+    background: #aaa;
+    height: 5000%;
+    width: 5000%;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 0;
+  }
+}
